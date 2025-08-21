@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Resume Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="progress-wrapper">
+        <div class="progress-bar" aria-hidden="true">
+          <div id="progressMeter" class="progress-meter" style="width: 0%"></div>
+        </div>
+        <div id="progressLabel" class="progress-label" aria-live="polite">0% complete</div>
+      </div>
+
+      <main class="layout">
+        <section class="form-pane">
+          <h1>Interactive Resume Builder</h1>
+
+          <form id="resumeForm" novalidate>
+            <fieldset>
+              <legend>Personal Information</legend>
+              <div class="field two-col">
+                <label>
+                  <span>Name</span>
+                  <input id="name" type="text" placeholder="Jane Doe" autocomplete="name" />
+                </label>
+                <label>
+                  <span>Email</span>
+                  <input id="email" type="email" placeholder="jane@example.com" autocomplete="email" />
+                </label>
+              </div>
+              <div class="field">
+                <label>
+                  <span>Phone Number</span>
+                  <input id="phone" type="tel" placeholder="+1 555 000 1234" autocomplete="tel" />
+                </label>
+              </div>
+              <div class="field">
+                <label>
+                  <span>Profile Summary</span>
+                  <textarea id="summary" rows="4" placeholder="Brief professional summary"></textarea>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Skills</legend>
+              <div class="field check-grid">
+                <label><input type="checkbox" class="skill-check" value="HTML" /> HTML</label>
+                <label><input type="checkbox" class="skill-check" value="CSS" /> CSS</label>
+                <label><input type="checkbox" class="skill-check" value="JavaScript" /> JavaScript</label>
+                <label><input type="checkbox" class="skill-check" value="React" /> React</label>
+                <label><input type="checkbox" class="skill-check" value="Node.js" /> Node.js</label>
+                <label><input type="checkbox" class="skill-check" value="Python" /> Python</label>
+              </div>
+              <div class="tag-input">
+                <input id="skillInput" type="text" placeholder="Type a skill and press Enter" />
+                <button type="button" id="addSkillBtn" class="btn secondary">Add Skill</button>
+              </div>
+              <div id="skillTags" class="tags" aria-live="polite"></div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Education</legend>
+              <div id="educationList" class="dynamic-list" aria-live="polite"></div>
+              <button type="button" id="addEducationBtn" class="btn">+ Add Education</button>
+            </fieldset>
+
+            <fieldset>
+              <legend>Experience</legend>
+              <div id="experienceList" class="dynamic-list" aria-live="polite"></div>
+              <button type="button" id="addExperienceBtn" class="btn">+ Add Experience</button>
+            </fieldset>
+
+            <div class="actions">
+              <button type="button" id="clearBtn" class="btn danger">Clear Form</button>
+              <button type="button" id="printBtn" class="btn primary">Download as PDF</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="preview-pane">
+          <article id="resumePreview" class="resume" aria-live="polite">
+            <header class="resume-header">
+              <h2 id="previewName" class="reveal">Your Name</h2>
+              <p id="previewContact" class="contact reveal">email@example.com • +1 000 000 0000</p>
+            </header>
+            <section id="previewSummarySection" class="resume-section hidden">
+              <h3>Profile</h3>
+              <p id="previewSummary"></p>
+            </section>
+            <section id="previewSkillsSection" class="resume-section hidden">
+              <h3>Skills</h3>
+              <ul id="previewSkills" class="skill-chips"></ul>
+            </section>
+            <section id="previewEducationSection" class="resume-section hidden">
+              <h3>Education</h3>
+              <ul id="previewEducation" class="timeline"></ul>
+            </section>
+            <section id="previewExperienceSection" class="resume-section hidden">
+              <h3>Experience</h3>
+              <ul id="previewExperience" class="timeline"></ul>
+            </section>
+          </article>
+        </section>
+      </main>
+    </div>
+  </body>
+  </html>
+
+
